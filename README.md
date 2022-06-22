@@ -2,14 +2,18 @@
 
 This project has the basic settings to use Laravel 9.x + VueJs 2.x in separate environments using Sanctum authentication
 
-Installation:
+###Including:
+- Vuex
+- Axios
 
-# Frontend
+#Installation:
+
+## Frontend
 - Open a **terminal** and go to **/frontend**
 - run: `npm i`
 - run: `npm run serve`
 
-# Backend
+## Backend
 - Open a **terminal** and go to **/backend**
 - run: `composer install`
 - run: `npm i`
@@ -22,4 +26,4 @@ Installation:
 - run: `php artisan serve`
 
 # Test
-- Check component **LoginForm.vue** to test Login, Logout and get user information
+- Check component **LoginForm.vue** to test Login, Logout, get user information and Vuex functions
