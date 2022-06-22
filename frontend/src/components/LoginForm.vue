@@ -4,11 +4,17 @@
     <button @click="login">Login</button>
     <button @click="logout">Logout</button>
     <button @click="getUser">Get User</button>
+    <hr>
+    Vuex: [{{ vuexData }}]
+    <button @click="setVuexData">Set Vuex Data</button>
+    <button @click="getVuexData">Get Vuex Data</button>
+    <button @click="deleteVuexData">Delete Vuex Data</button>
   </div>
 </template>
 
 <script>
 import apiClient from "../services/api";
+import "@/mixins/global.js";
 
 export default {
   data() {
@@ -17,11 +23,12 @@ export default {
       password: null,
       loading: false,
       errors:[],
+      vuexData: ''
     };
   },
   methods: {
     async login() {
-      this.loading = true; // can use this to triggle a :disabled on login button
+      this.loading = true; // can use this to toggle a :disabled on login button
       this.errors = [];
 
       this.email = 'a@a.com'
@@ -62,6 +69,16 @@ export default {
       } catch (error) {
         this.errors = error.response && error.response.data.errors;
       }
+    },
+    setVuexData() {
+      this.$store.dispatch('setUserData', 'test vuex data')
+    },
+    getVuexData() {
+      this.vuexData = this.getUserInfo()
+    },
+    deleteVuexData() {
+      this.$store.dispatch('deleteUserData')
+      this.vuexData = null
     }
   },
 };
